@@ -35,4 +35,20 @@ function ds_theme_assets() {
     }
 }
 
+
 add_action('wp_enqueue_scripts', 'ds_theme_assets');
+
+
+function ds_setup() {
+
+    // Enable menu support
+    add_theme_support('menus');
+
+    // Register primary menu
+    register_nav_menu('primary', 'Primary Menu');
+
+}
+
+add_action('init', 'ds_setup');
+
+?>
