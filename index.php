@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main>
+<main class="container">
     <h2>Hello Digital School Students</h2>
     <p>This is our custom WordPress theme.</p>
 </main>
@@ -8,7 +8,7 @@
 
     <?php while ( have_posts() ) : the_post(); ?>
 
-        <article>
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
             <h2><?php the_title(); ?></h2>
 

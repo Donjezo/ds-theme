@@ -51,4 +51,15 @@ function ds_setup() {
 
 add_action('init', 'ds_setup');
 
+function ds_theme_setup() {
+    add_theme_support('post-thumbnails');
+
+    add_theme_support('post-formats', array('aside', 'image', 'video'));
+
+    add_theme_support('title-tag');
+}
+add_action('after_setup_theme', 'ds_theme_setup');
+
+;
+
 ?>
