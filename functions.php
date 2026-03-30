@@ -179,4 +179,46 @@ function our_custom_movie() {
 add_action( 'init', 'our_custom_movie' );
 
 
+
+
+function register_taxonomy_movie_genres() {
+
+    $labels = array(
+        'name'              => _x('Movie genres', 'taxonomy general name'),
+        'singular_name'     => _x('Movie genre', 'taxonomy singular name'),
+        'search_items'      => __('Search Movie genre'),
+        'all_items'         => __('All Movie genre'),
+        'parent_item'       => __('Parent Movie genre'),
+        'parent_item_colon' => __('Parent Movie genre:'),
+        'edit_item'         => __('Edit Movie genre'),
+        'update_item'       => __('Update Movie genre'),
+        'add_new_item'      => __('Add New Movie genre'),
+        'new_item_name'     => __('New Movie genre Name'),
+        'menu_name'         => __('Movie genre'),
+    );
+
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'show_in_rest'      => true,
+        'rewrite'           => array('slug' => 'movie_genre'),
+    );
+
+    register_taxonomy('movie_genres', array('movies'), $args);
+
+    register_taxonomy('movietags', 'movies', array(
+        'label'             => 'Movie tags',
+        'rewrite'           => array('slug' => 'movie_tags'),
+        'hierarchical'      => false,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+    ));
+}
+
+add_action('init', 'register_taxonomy_movie_genres');
+
 ?>
